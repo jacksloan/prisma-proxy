@@ -1,9 +1,13 @@
 {
   "compilerOptions": {
-    "sourceMap": true,
-    "outDir": "dist",
-    "strict": true,
+    "declaration": true,
+    "esModuleInterop": true,
     "lib": ["esnext", "dom"],
-    "esModuleInterop": true
-  }
+    "module": "commonjs",
+    "outDir": "dist",
+    "sourceMap": true,
+    "strict": true,
+    "target": "es5"
+  },
+  "exclude": ["node_modules", "dist"]
 }

@@ -2,23 +2,24 @@ import axios, { Axios } from "axios";
 import { PrismaProxy } from "./shared";
 
 export function createAxiosClient<PrismaClient>(options: {
-  basePath: string;
+  baseURL: string;
   axios?: Axios;
 }): PrismaProxy<PrismaClient> {
   return new Proxy(
     {},
     {
-      get(target: any, prismaEntity: string, _receiver) {
+      get(_target: any, prismaEntity: string, _receiver) {
         return new Proxy(
           {},
           {
-            get(target: any, prismaAction: string, _receiver) {
-              const url = `${options.basePath}/${prismaEntity}/${prismaAction}`;
+            get(_target: any, prismaAction: string, _receiver) {
               return async (prismaArgs: any) => {
-                const response = await (options?.axios || axios).post(
-                  url,
-                  prismaArgs
-                );
+                const response = await (options?.axios || axios).request({
+                  method: "POST",
+                  url: `/${prismaEntity}/${prismaAction}`,
+                  baseURL: options.baseURL,
+                  data: prismaArgs,
+                });
                 return response.data;
               };
             },

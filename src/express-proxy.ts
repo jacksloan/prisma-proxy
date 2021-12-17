@@ -1,9 +1,23 @@
 import { Application, RequestHandler } from "express";
 import { PartialDeep } from "type-fest";
 
+type ExtraFirstPrismaArgumentType<
+  PrismaClient extends any,
+  PrismaEntityName extends keyof PrismaClient,
+  PrismaActionName extends keyof PrismaClient[PrismaEntityName]
+> = Parameters<
+  PrismaClient[PrismaEntityName][PrismaActionName] extends (...args: any) => any
+    ? PrismaClient[PrismaEntityName][PrismaActionName]
+    : never
+>[0];
+
 export type PrismaProxyRequestHandler<PrismaClient> = {
   [entity in keyof PrismaClient]: {
-    [operation in keyof PrismaClient[entity]]: RequestHandler;
+    [action in keyof PrismaClient[entity]]: RequestHandler<
+      { [k in entity | action]: string },
+      any,
+      ExtraFirstPrismaArgumentType<PrismaClient, entity, action>
+    >;
   };
 };
 
