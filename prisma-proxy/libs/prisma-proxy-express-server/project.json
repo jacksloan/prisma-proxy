@@ -1,0 +1,33 @@
+{
+  "root": "libs/prisma-proxy-express-server",
+  "sourceRoot": "libs/prisma-proxy-express-server/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/prisma-proxy-express-server",
+        "main": "libs/prisma-proxy-express-server/src/index.ts",
+        "tsConfig": "libs/prisma-proxy-express-server/tsconfig.lib.json",
+        "assets": ["libs/prisma-proxy-express-server/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/prisma-proxy-express-server/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/prisma-proxy-express-server"],
+      "options": {
+        "jestConfig": "libs/prisma-proxy-express-server/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["server"]
+}

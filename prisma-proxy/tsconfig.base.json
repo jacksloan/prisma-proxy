@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@prisma-proxy/prisma-proxy-express-server": [
+        "libs/prisma-proxy-express-server/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
