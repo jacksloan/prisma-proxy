@@ -1,11 +1,14 @@
 import { PrismaClient } from "@prisma/client";
+import axios from "axios";
 import { createAxiosClient as createAxiosClient } from "../src/axios-client";
 
 const proxy = createAxiosClient<PrismaClient>({
   basePath: "http://localhost:3000",
-  headers: {
-    authorization: "ADMIN",
-  },
+  axios: axios.create({
+    headers: {
+      authorization: "ADMIN",
+    },
+  }),
 });
 
 async function main() {

@@ -1,9 +1,9 @@
-import axios from "axios";
+import axios, { Axios } from "axios";
 import { PrismaProxy } from "./shared";
 
 export function createAxiosClient<PrismaClient>(options: {
   basePath: string;
-  headers?: Record<string, string>;
+  axios?: Axios;
 }): PrismaProxy<PrismaClient> {
   return new Proxy(
     {},
@@ -15,9 +15,10 @@ export function createAxiosClient<PrismaClient>(options: {
             get(target: any, prismaAction: string, _receiver) {
               const url = `${options.basePath}/${prismaEntity}/${prismaAction}`;
               return async (prismaArgs: any) => {
-                const response = await axios.post(url, prismaArgs, {
-                  headers: options.headers,
-                });
+                const response = await (options?.axios || axios).post(
+                  url,
+                  prismaArgs
+                );
                 return response.data;
               };
             },
