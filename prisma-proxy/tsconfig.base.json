@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@prisma-proxy/prisma-proxy-axios-client": [
+        "libs/prisma-proxy-axios-client/src/index.ts"
+      ],
       "@prisma-proxy/prisma-proxy-express-server": [
         "libs/prisma-proxy-express-server/src/index.ts"
       ]
