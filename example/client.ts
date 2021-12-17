@@ -3,7 +3,7 @@ import axios from "axios";
 import { createAxiosClient as createAxiosClient } from "../src/axios-client";
 
 const proxy = createAxiosClient<PrismaClient>({
-  basePath: "http://localhost:3000",
+  baseURL: "http://localhost:3000/prisma-proxy",
   axios: axios.create({
     headers: {
       authorization: "ADMIN",
