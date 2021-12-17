@@ -56,10 +56,16 @@ export function createDefaultRequestHandlers(
   );
 }
 
+class HttpError extends Error {
+  status = 500;
+  constructor(status: number, message: string) {
+    super(message);
+    this.status = status;
+  }
+}
+
 const fallbackHandler: RequestHandler = (req, res, next) => {
-  const error = new Error('Forbidden');
-  (error as any).status = 403;
-  next(error);
+  next(new HttpError(403, 'Forbidden'));
 };
 
 export function createPrismaExpressProxy<PrismaClient>(options: {
