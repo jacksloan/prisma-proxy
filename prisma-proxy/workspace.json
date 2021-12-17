@@ -3,6 +3,7 @@
   "projects": {
     "example-prisma-proxy-express": "apps/example-prisma-proxy-express",
     "prisma-proxy-axios-client": "libs/prisma-proxy-axios-client",
-    "prisma-proxy-express-server": "libs/prisma-proxy-express-server"
+    "prisma-proxy-express-server": "libs/prisma-proxy-express-server",
+    "shared": "libs/shared"
   }
 }
