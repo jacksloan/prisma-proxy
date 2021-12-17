@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "projects": {
+    "example-prisma-proxy-express": "apps/example-prisma-proxy-express"
+  }
+}
