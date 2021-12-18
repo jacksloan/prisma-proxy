@@ -109,7 +109,11 @@ export function createPrismaExpressProxy<PrismaClient>(options: {
     (req, res, next) => {
       const { prismaEntity, prismaAction } = req.params;
       const middleware = (middlewares as any)?.[prismaEntity]?.[prismaAction];
-      middleware(req, res, next);
+      if (middleware && typeof middleware === 'function') {
+        middleware(req, res, next);
+      } else {
+        next(new Error(`no middleware defined for route ${prismaEntity}/${prismaAction}`));
+      }
     }
   );
   app.post(`${apiPrefix || ''}/:prismaEntity/:prismaAction`, (req, res) => {

@@ -1,0 +1,33 @@
+{
+  "root": "apps/example-prisma-proxy-client",
+  "projectType": "application",
+  "sourceRoot": "apps/example-prisma-proxy-client/src",
+  "targets": {
+    "build": {
+      "executor": "@nxext/sveltekit:sveltekit",
+      "options": {
+        "command": "build"
+      }
+    },
+    "serve": {
+      "executor": "@nxext/sveltekit:sveltekit",
+      "options": {
+        "command": "dev",
+        "proxyConfig": "apps/example-prisma-proxy-client/proxy.conf.json"
+      }
+    },
+    "add": {
+      "executor": "@nxext/sveltekit:add"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/example-prisma-proxy-client/**/*.{ts,svelte,spec.ts}"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
