@@ -6,14 +6,15 @@ import {
   createDefaultRequestHandlers,
 } from "../src/express-proxy";
 
-const prismaClient = new PrismaClient();
 const expressApp = express();
+
+// some type of json parsing middleware is required!
 expressApp.use(bodyParser.json());
 
 createPrismaExpressProxy({
   apiPrefix: "/prisma-proxy",
   app: expressApp,
-  prisma: prismaClient,
+  prisma: new PrismaClient(),
 
   // returns 403 forbidden for all handlers not explicitly set
   middleware: {
