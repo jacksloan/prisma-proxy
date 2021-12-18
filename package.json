@@ -1,30 +1,63 @@
 {
-  "name": "prisma-express-proxy",
+  "name": "prisma-proxy",
+  "version": "0.0.0",
   "license": "MIT",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "devDependencies": {
-    "@types/express": "^4.17.13",
-    "@types/node": "16.11.12",
-    "body-parser": "^1.19.1",
-    "prisma": "3.6.0",
-    "ts-node": "10.4.0",
-    "type-fest": "^2.8.0",
-    "typescript": "4.5.3"
-  },
   "scripts": {
-    "prepublish": "tsc",
-    "start:server": "ts-node ./example/server.ts",
-    "start:client": "ts-node ./example/client.ts"
+    "start": "nx serve",
+    "build": "nx build",
+    "test": "nx test"
   },
-  "engines": {
-    "node": ">=12.2.0"
-  },
-  "peerDependencies": {
-    "@prisma/client": "^3.6.0",
-    "axios": "^0.24.0"
-  },
+  "private": true,
   "dependencies": {
-    "express": "^4.17.2"
+    "@nrwl/next": "13.3.9",
+    "@prisma/client": "^3.6.0",
+    "axios": "0.24.0",
+    "core-js": "^3.6.5",
+    "express": "4.17.2",
+    "next": "12.0.7",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "regenerator-runtime": "0.13.7",
+    "tslib": "2.3.1"
+  },
+  "devDependencies": {
+    "@angular-devkit/schematics": "13.1.2",
+    "@nrwl/cli": "13.3.9",
+    "@nrwl/cypress": "13.3.9",
+    "@nrwl/eslint-plugin-nx": "13.3.9",
+    "@nrwl/express": "13.3.9",
+    "@nrwl/jest": "13.3.9",
+    "@nrwl/js": "13.3.9",
+    "@nrwl/linter": "13.3.9",
+    "@nrwl/next": "13.3.9",
+    "@nrwl/node": "13.3.9",
+    "@nrwl/react": "13.3.9",
+    "@nrwl/tao": "13.3.9",
+    "@nrwl/web": "13.3.9",
+    "@nrwl/workspace": "13.3.9",
+    "@testing-library/react": "12.1.2",
+    "@testing-library/react-hooks": "7.0.2",
+    "@types/axios": "^0.14.0",
+    "@types/express": "^4.17.13",
+    "@types/jest": "27.0.2",
+    "@types/node": "14.14.33",
+    "@types/react": "17.0.30",
+    "@types/react-dom": "17.0.9",
+    "babel-jest": "27.2.3",
+    "cypress": "^9.1.0",
+    "eslint": "8.2.0",
+    "eslint-config-next": "12.0.7",
+    "eslint-config-prettier": "8.1.0",
+    "eslint-plugin-cypress": "^2.10.3",
+    "eslint-plugin-import": "2.25.2",
+    "eslint-plugin-jsx-a11y": "6.4.1",
+    "eslint-plugin-react": "7.26.1",
+    "eslint-plugin-react-hooks": "4.2.0",
+    "jest": "27.2.3",
+    "prettier": "2.5.1",
+    "prisma": "^3.6.0",
+    "react-test-renderer": "17.0.2",
+    "ts-jest": "27.0.5",
+    "typescript": "~4.4.3"
   }
 }
