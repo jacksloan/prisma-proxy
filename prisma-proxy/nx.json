@@ -29,5 +29,5 @@
       }
     ]
   },
-  "defaultProject": "example-prisma-proxy-express"
+  "defaultProject": "api"
 }

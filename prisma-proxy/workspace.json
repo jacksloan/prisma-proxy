@@ -1,7 +1,7 @@
 {
   "version": 2,
   "projects": {
-    "example-prisma-proxy-express": "apps/example-prisma-proxy-express",
+    "api": "apps/api",
     "prisma-proxy-axios-client": "libs/prisma-proxy-axios-client",
     "prisma-proxy-express-server": "libs/prisma-proxy-express-server"
   }
