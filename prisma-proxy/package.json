@@ -9,6 +9,7 @@
   },
   "private": true,
   "dependencies": {
+    "@prisma/client": "^3.6.0",
     "axios": "^0.24.0",
     "express": "^4.17.2",
     "tslib": "^2.0.0"
@@ -33,6 +34,7 @@
     "eslint-config-prettier": "8.1.0",
     "jest": "27.2.3",
     "prettier": "^2.3.1",
+    "prisma": "^3.6.0",
     "ts-jest": "27.0.5",
     "typescript": "~4.4.3"
   }

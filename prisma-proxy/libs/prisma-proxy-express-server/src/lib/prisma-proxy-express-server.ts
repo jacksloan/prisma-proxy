@@ -1,7 +1,18 @@
 import { Application, RequestHandler } from 'express';
 import { PartialDeep } from 'type-fest';
 
-type ExtraFirstPrismaArgumentType<
+export type FilterNotStartingWith<
+  T,
+  Prefix extends string
+> = T extends `${Prefix}${infer _Rest}` ? never : T;
+
+// remove all keys starting with '$' prefix leaving only entity names
+export type OmitKeysStartingWith$<T> = Pick<
+  T,
+  FilterNotStartingWith<keyof T, '$'>
+>;
+
+type GetFirstParameterType<
   PrismaClient,
   PrismaEntityName extends keyof PrismaClient,
   PrismaActionName extends keyof PrismaClient[PrismaEntityName]
@@ -18,7 +29,7 @@ export type PrismaProxyRequestHandler<PrismaClient> = {
     [action in keyof PrismaClient[entity]]: RequestHandler<
       { [k in entity | action]: string },
       unknown,
-      ExtraFirstPrismaArgumentType<PrismaClient, entity, action>
+      GetFirstParameterType<PrismaClient, entity, action>
     >;
   };
 };
@@ -72,7 +83,9 @@ export function createPrismaExpressProxy<PrismaClient>(options: {
   apiPrefix?: `/${string}`;
   app: Application;
   prisma: PrismaClient;
-  middleware: PartialDeep<PrismaProxyRequestHandler<PrismaClient>>;
+  middleware: PartialDeep<
+    PrismaProxyRequestHandler<OmitKeysStartingWith$<PrismaClient>>
+  >;
   defaultMiddleware?: RequestHandler;
 }) {
   const { apiPrefix, app, prisma, middleware, defaultMiddleware } = options;

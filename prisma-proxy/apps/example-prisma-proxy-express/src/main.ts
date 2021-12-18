@@ -3,12 +3,26 @@
  * This is only a minimal backend to get started.
  */
 
+import { createPrismaExpressProxy } from '@prisma-proxy/prisma-proxy-express-server';
+import { PrismaClient } from '@prisma/client';
 import * as express from 'express';
 
 const app = express();
+const prisma = new PrismaClient();
 
-app.get('/api', (req, res) => {
-  res.send({ message: 'Welcome to example-prisma-proxy-express!' });
+createPrismaExpressProxy({
+  app,
+  prisma,
+  apiPrefix: '/prisma',
+  defaultMiddleware: (_res, _req, next) => next(new Error('forbidden')),
+  middleware: {
+    post: {
+      // allow any request to fetch many posts
+      findMany: (_req, _res, next) => {
+        next();
+      },
+    },
+  },
 });
 
 const port = process.env.port || 3333;
