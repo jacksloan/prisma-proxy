@@ -1,2 +1,19 @@
 .page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+.page h1 {
+  font-size: 2em;
+  font-weight: bold;
+}
+.page h2 {
+  margin-top: 1em;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.pageChild {
+  width: 768px;
+  height: 100%;
 }
