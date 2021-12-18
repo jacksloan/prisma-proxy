@@ -13,6 +13,14 @@ const app = express();
 const prisma = new PrismaClient();
 
 const allowAnyRequest: RequestHandler = (_req, _res, next) => next();
+const isInRoleEditor: RequestHandler = (req, _res, next) => {
+  // fake auth
+  if (req.headers.authorization === 'EDITOR') {
+    next();
+  } else {
+    next(new HttpErrorResponse(403, 'You need to be an editor to do that'));
+  }
+};
 
 createPrismaExpressProxy({
   app,
@@ -21,11 +29,14 @@ createPrismaExpressProxy({
     next(new HttpErrorResponse(403, 'Forbidden')),
   middleware: {
     post: {
-      create: allowAnyRequest,
+      // un-authenticated routes
       findMany: allowAnyRequest,
-      update: allowAnyRequest,
       findUnique: allowAnyRequest,
-      delete: allowAnyRequest,
+
+      // restricted routes
+      create: isInRoleEditor,
+      update: isInRoleEditor,
+      delete: isInRoleEditor,
     },
   },
 });
