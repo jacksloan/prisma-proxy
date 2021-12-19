@@ -1,4 +1,4 @@
-import { createPrismaExpressProxy } from '@prisma-proxy/prisma-proxy-express-server';
+import { createPrismaExpressProxy } from 'prisma-proxy-express-server';
 import { PrismaClient } from '@prisma/client';
 import * as express from 'express';
 import type { RequestHandler } from 'express';

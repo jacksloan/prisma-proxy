@@ -1,4 +1,4 @@
 {
-  "name": "@prisma-proxy/prisma-proxy-express-server",
+  "name": "prisma-proxy-express-server",
   "version": "0.0.1"
 }
