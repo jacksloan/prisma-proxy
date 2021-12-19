@@ -5,7 +5,7 @@ import styles from './index.module.css';
 
 export async function getServerSideProps(_context: NextPageContext) {
   const baseURL = 'http://localhost:3333';
-  const api = createAxiosClient<PrismaClient>({ baseURL });
+  const api = createAxiosClient<PrismaClient>({ baseUrl: baseURL });
   const posts = await api.post.findMany();
   return { props: { posts } };
 }

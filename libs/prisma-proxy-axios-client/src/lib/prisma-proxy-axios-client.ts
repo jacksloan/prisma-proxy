@@ -1,5 +1,3 @@
-import axios, { Axios } from 'axios';
-
 export type FilterNotStartingWith<
   T,
   Prefix extends string
@@ -9,8 +7,8 @@ export type FilterNotStartingWith<
 export type PrismaProxy<T> = Pick<T, FilterNotStartingWith<keyof T, '$'>>;
 
 export function createAxiosClient<PrismaClient>(options: {
-  baseURL: string;
-  axios?: Axios;
+  baseUrl: string;
+  requestOptions?: RequestInit | (() => RequestInit | Promise<RequestInit>);
 }): PrismaProxy<PrismaClient> {
   return new Proxy(
     {},
@@ -21,13 +19,20 @@ export function createAxiosClient<PrismaClient>(options: {
           {
             get(_target: any, prismaAction: string, _receiver) {
               return async (prismaArgs: any) => {
-                const response = await (options?.axios || axios).request({
-                  method: 'POST',
-                  url: `/${prismaEntity}/${prismaAction}`,
-                  baseURL: options.baseURL,
-                  data: prismaArgs,
-                });
-                return response.data;
+                const requestInit = options.requestOptions
+                  ? typeof options.requestOptions === 'function'
+                    ? await options.requestOptions()
+                    : options.requestOptions
+                  : {};
+                const response = await fetch(
+                  `${options.baseUrl}/${prismaEntity}/${prismaAction}`,
+                  {
+                    method: 'POST',
+                    body: prismaArgs,
+                    ...requestInit,
+                  }
+                );
+                return response.json();
               };
             },
           }
