@@ -1,4 +1,4 @@
-import { createAxiosClient } from '@prisma-proxy/prisma-proxy-axios-client';
+import { createAxiosClient } from '@prisma-proxy/prisma-proxy-fetch-client';
 import { Post, PrismaClient } from '@prisma/client';
 import { NextPage, NextPageContext } from 'next';
 import styles from './index.module.css';

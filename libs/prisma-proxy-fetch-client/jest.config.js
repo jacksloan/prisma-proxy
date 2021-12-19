@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'prisma-proxy-axios-client',
+  displayName: 'prisma-proxy-fetch-client',
   preset: '../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -10,5 +10,5 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/prisma-proxy-axios-client',
+  coverageDirectory: '../../coverage/libs/prisma-proxy-fetch-client',
 };

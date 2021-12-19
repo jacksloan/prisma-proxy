@@ -1,0 +1,33 @@
+{
+  "root": "libs/prisma-proxy-fetch-client",
+  "sourceRoot": "libs/prisma-proxy-fetch-client/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/prisma-proxy-fetch-client",
+        "main": "libs/prisma-proxy-fetch-client/src/index.ts",
+        "tsConfig": "libs/prisma-proxy-fetch-client/tsconfig.lib.json",
+        "assets": ["libs/prisma-proxy-fetch-client/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/prisma-proxy-fetch-client/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/prisma-proxy-fetch-client"],
+      "options": {
+        "jestConfig": "libs/prisma-proxy-fetch-client/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["client"]
+}
