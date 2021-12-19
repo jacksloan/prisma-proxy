@@ -1,7 +1,11 @@
 {
   "name": "prisma-proxy-fetch-client",
-  "version": "0.0.3",
+  "version": "0.0.4",
+  "type": "module",
   "main": "./src/index.min.js",
+  "dependencies": {
+    "tslib": "2.3.1"
+  },
   "scripts": {
     "uglify": "npx uglify-js ./src/index.js -o ./src/index.min.js --compress --mangle --toplevel",
     "prepublish": "npm run uglify"

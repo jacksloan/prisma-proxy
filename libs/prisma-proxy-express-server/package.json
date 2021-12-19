@@ -1,6 +1,10 @@
 {
   "name": "prisma-proxy-express-server",
-  "version": "0.0.2",
+  "version": "0.0.4",
+  "type": "module",
+  "dependencies": {
+    "tslib": "2.3.1"
+  },
   "peerDependencies": {
     "express": "^4.17.2"
   },
