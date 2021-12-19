@@ -1,4 +1,10 @@
 {
   "name": "prisma-proxy-express-server",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "peerDependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "type-fest": "^2.8.0"
+  }
 }
