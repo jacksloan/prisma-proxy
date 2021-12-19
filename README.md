@@ -18,3 +18,19 @@ Creates a tiny (237 bytes minified & gzipped), typesafe api client for your expr
 [NextJS example app](apps/web/pages/index.tsx)
 
 [README](libs/prisma-proxy-fetch-client/README.md)
+
+## Running the examples apps
+
+```
+# install dependencies
+npm install
+
+# generate the prisma client
+npx prisma generate
+
+# serve the express app
+npx nx serve api
+
+# in another shell serve the next.js app
+npx nx serve web
+```
