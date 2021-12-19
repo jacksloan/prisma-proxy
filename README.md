@@ -28,9 +28,6 @@ npm install
 # generate the prisma client
 npx prisma generate
 
-# serve the express app
-npx nx serve api
-
-# in another shell serve the next.js app
-npx nx serve web
+# serve the api and web project
+npm run serve
 ```
