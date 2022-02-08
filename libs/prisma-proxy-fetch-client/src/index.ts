@@ -16,12 +16,18 @@ export function createFetchClient<PrismaClient>(opt: {
   ) => new Proxy({}, { get: handler });
   return newProxy((_, prismaEntity) =>
     newProxy((_, prismaAction) => async (body: any) => {
+      const options = opt.requestOptions ? await opt.requestOptions() : {};
+
       const res = await (opt.fetch || fetch)(
         `${opt.baseUrl}/${prismaEntity}/${prismaAction}`,
         {
+          ...options,
           method: 'POST',
-          body,
-          ...(opt.requestOptions ? await opt.requestOptions() : {}),
+          body: JSON.stringify(body),
+          headers: {
+            ...(options?.headers || {}),
+            'Content-Type': 'application/json',
+          },
         }
       );
       return res.json();
