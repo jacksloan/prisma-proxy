@@ -1,4 +1,4 @@
-import { Application, RequestHandler } from 'express';
+import { Application, RequestHandler, json } from 'express';
 import { PartialDeep } from 'type-fest';
 
 export type FilterNotStartingWith<
@@ -89,6 +89,7 @@ export function createPrismaExpressProxy<PrismaClient>(options: {
   defaultMiddleware?: RequestHandler;
 }) {
   const { apiPrefix, app, prisma, middleware, defaultMiddleware } = options;
+  app.use(json())
 
   const middlewares = Object.keys(prisma)
     .filter((maybeEntity) => maybeEntity[0] !== '$')
