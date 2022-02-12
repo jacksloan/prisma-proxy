@@ -18,8 +18,8 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-      - run: ls -al
-    # - uses: actions/checkout@v2
+    - uses: actions/checkout@v2
+    - run: ls -R
     # - name: Use Node.js ${{ matrix.node-version }}
     #   uses: actions/setup-node@v2
     #   with:
