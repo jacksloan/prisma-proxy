@@ -31,12 +31,12 @@ jobs:
 
     - name: Publish prisma-proxy-express-server
       run: npm publish
-      working-directory: ./dist/libs/prisma-proxy-express-server
+      working-directory: dist/libs/prisma-proxy-express-server
       env: 
         NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
 
     - name: Publish prisma-proxy-express-server
       run: npm publish
-      working-directory: ./dist/libs/prisma-proxy-fetch-client
+      working-directory: dist/libs/prisma-proxy-fetch-client
       env: 
         NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
