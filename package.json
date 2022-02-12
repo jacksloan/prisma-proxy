@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "nx run-many --target=serve --projects=api,web",
     "test": "nx run-many --target=test --projects=api,web",
+    "version-patch": "cd libs/prisma-proxy-express-server && npm version patch && cd ../prisma-proxy-fetch-client && npm version patch",
     "build-libs": "nx run-many --target=build --projects=prisma-proxy-express-server,prisma-proxy-fetch-client"
   },
   "private": true,
