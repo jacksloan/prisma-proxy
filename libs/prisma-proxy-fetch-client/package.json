@@ -1,6 +1,6 @@
 {
   "name": "prisma-proxy-fetch-client",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "./src/index.min.js",
   "dependencies": {
     "tslib": "2.3.1"
