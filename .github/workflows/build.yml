@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.14.0]
+        node-version: [12.x, 14.x, 16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -26,6 +26,19 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+        registry-url: https://registry.npmjs.org
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+
+    # publish server package
+    - run: cd dist/libs/prisma-proxy-express-server
+    - run: npm publish
+      env: 
+        NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+
+    # publish client package
+    - run: cd ../prisma-proxy-fetch-client
+    - run: npm publish
+      env: 
+        NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
