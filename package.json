@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "serve": "nx run-many --target=serve --projects=api,web",
+    "test": "nx run-many --target=test --projects=api,web",
     "build-libs": "nx run-many --target=build --projects=prisma-proxy-express-server,prisma-proxy-fetch-client"    
   },
   "private": true,
