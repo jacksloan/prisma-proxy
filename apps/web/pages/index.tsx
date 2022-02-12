@@ -4,8 +4,9 @@ import { NextPage, NextPageContext } from 'next';
 import styles from './index.module.css';
 
 export async function getServerSideProps(_context: NextPageContext) {
-  const baseURL = 'http://localhost:3333';
-  const api = createFetchClient<PrismaClient>(baseURL);
+  const api = createFetchClient<PrismaClient>({
+    baseUrl: 'http://localhost:3333',
+  });
   const posts: Post[] = await api.post.findMany();
   return { props: { posts } };
 }

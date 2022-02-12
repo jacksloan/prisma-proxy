@@ -89,7 +89,7 @@ export function createPrismaExpressProxy<PrismaClient>(options: {
   defaultMiddleware?: RequestHandler;
 }) {
   const { apiPrefix, app, prisma, middleware, defaultMiddleware } = options;
-  app.use(json())
+  app.use(json({strict: false}))
 
   const middlewares = Object.keys(prisma)
     .filter((maybeEntity) => maybeEntity[0] !== '$')
