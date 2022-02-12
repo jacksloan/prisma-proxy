@@ -26,18 +26,18 @@ jobs:
         cache: 'npm'
         registry-url: https://registry.npmjs.org
     - run: npm ci
-    - run: npm run build
+    - run: npm run build-libs
     - run: ls -R
-    # - run: npm test
+    - run: npm test
 
-    # - name: Publish prisma-proxy-express-server
-    #   run: npm publish
-    #   working-directory: dist/libs/prisma-proxy-express-server
-    #   env: 
-    #     NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+    - name: Publish prisma-proxy-express-server
+      run: npm publish
+      working-directory: dist/libs/prisma-proxy-express-server
+      env: 
+        NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
 
-    # - name: Publish prisma-proxy-express-server
-    #   run: npm publish
-    #   working-directory: dist/libs/prisma-proxy-fetch-client
-    #   env: 
-    #     NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+    - name: Publish prisma-proxy-express-server
+      run: npm publish
+      working-directory: dist/libs/prisma-proxy-fetch-client
+      env: 
+        NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
