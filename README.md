@@ -74,7 +74,7 @@ All requests return 403: Forbidden until you explicitly enable them with middlew
 
 ## Prisma Proxy Fetch Client
 
-Creates a tiny (237 bytes minified & gzipped), typesafe api client for your express server proxy
+Creates a tiny (454 bytes minified & gzipped), typesafe api client for your express server proxy
 
 [NextJS example app](apps/web/pages/index.tsx)
 

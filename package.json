@@ -6,7 +6,8 @@
     "serve": "nx run-many --target=serve --projects=api,web",
     "test": "nx run-many --target=test --projects=api,web",
     "patch": "cd libs/prisma-proxy-express-server && npm version patch && cd ../prisma-proxy-fetch-client && npm version patch",
-    "build-libs": "nx run-many --target=build --projects=prisma-proxy-express-server,prisma-proxy-fetch-client"
+    "build-libs": "nx run-many --target=build --projects=prisma-proxy-express-server,prisma-proxy-fetch-client",
+    "byte-count": "npm run build-libs && npx uglify-js -m -c -- dist/libs/prisma-proxy-fetch-client/src/index.js | gzip | wc -c"
   },
   "private": true,
   "dependencies": {
