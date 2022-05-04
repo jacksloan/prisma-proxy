@@ -123,6 +123,6 @@ export function createPrismaExpressProxy<PrismaClient>(options: {
     const prismaFunc: (args: any) => Promise<any> = (prisma as any)[
       prismaEntity
     ][prismaAction];
-    prismaFunc(prismaArgs).then((data: any) => res.send(data));
+    prismaFunc(prismaArgs).then((data: any) => res.json(data));
   });
 }

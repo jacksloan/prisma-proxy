@@ -34,7 +34,7 @@ export function createFetchClient<PrismaClient>(opt: {
       const text = await res.text();
       try {
         // null is a valid prisma response for some queries
-        return text === null ? text : JSON.parse(text);
+        return text && JSON.parse(text);
       } catch (e) {
         throw new Error(
           `Prisma proxy client - could not parse json from text ${text}`
